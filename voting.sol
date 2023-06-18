@@ -15,6 +15,7 @@ contract VotingSystem {
     uint256 private totalVotes;
     uint256 private candidateno;
     bool public votingOpen;
+    address public owner;
 
     event VoteCasted(address indexed voter, uint256 candidateId);
     event VotingClosed();
@@ -40,6 +41,10 @@ contract VotingSystem {
         totalVotes++;
 
         emit VoteCasted(msg.sender, _candidateId);
+    }
+    modifier onlyOwner() {
+    require(msg.sender == owner, "Only the contract owner can perform this operation");
+    _;
     }
 
     function closeVoting() public onlyOwner {
