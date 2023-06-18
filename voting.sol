@@ -24,6 +24,7 @@ contract VotingSystem {
         addCandidate("Candidate 1");
         addCandidate("Candidate 2");
         votingOpen = true;
+        owner = msg.sender;
     }
 
     function addCandidate(string memory _name) private {
