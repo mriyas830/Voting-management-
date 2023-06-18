@@ -42,7 +42,7 @@ contract VotingSystem {
         emit VoteCasted(msg.sender, _candidateId);
     }
 
-    function closeVoting() public {
+    function closeVoting() public onlyOwner {
         require(votingOpen, "Voting is already closed");
 
         votingOpen = false;
